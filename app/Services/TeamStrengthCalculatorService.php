@@ -25,7 +25,10 @@ class TeamStrengthCalculatorService {
         $possibleGoals = 0;
         do {
             $possibleGoals++;
-        } while (mt_rand() / mt_getrandmax() < $normalizedStrength);
+        } while (
+            $possibleGoals <= self::MAX_GOALS
+            && mt_rand() / mt_getrandmax() < $normalizedStrength
+        );
 
         return $possibleGoals;
     }
